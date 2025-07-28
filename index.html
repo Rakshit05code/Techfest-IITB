@@ -1,30 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>IIT Bombay Techfest</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <section class="hero">
-    <div class="animated-background"></div>
-    <div class="floating-shapes">
-      <div class="shape circle"></div>
-      <div class="shape square"></div>
-      <div class="shape triangle"></div>
-      <div class="shape hexagon"></div>
-    </div>
-    <div class="content">
-      <h1 class="title">
-        <span>IIT Bombay</span>
-        <span class="glow">TECHFEST 2025</span>
-      </h1>
-      <p class="subtitle">India's Premier Technology Extravaganza</p>
-      <a href="#" class="cta">Explore Events</a>
-    </div>
-  </section>
-</body>
+<html lang="en" class="bg-black text-white scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Techfest IIT Bombay 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <style>
+      body {
+        font-family: 'Orbitron', sans-serif;
+        background: linear-gradient(135deg, #000000, #0f0f2e);
+      }
+    </style>
+  </head>
+
+  <body class="relative overflow-x-hidden">
+    <!-- Navbar -->
+    <header class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md shadow-md">
+      <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="text-2xl font-bold text-cyan-400">⚡ Techfest '25</div>
+        <ul class="flex gap-6 text-sm md:text-base font-medium text-white">
+          <li class="nav-item cursor-pointer">Home</li>
+          <li class="nav-item cursor-pointer">Events</li>
+          <li class="nav-item cursor-pointer">Speakers</li>
+          <li class="nav-item cursor-pointer">Workshops</li>
+          <li class="nav-item cursor-pointer">Contact</li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-32">
+      <h1 class="text-6xl md:text-7xl font-extrabold mb-6 text-cyan-300">TECHFEST 2025</h1>
+      <p class="text-lg text-gray-300 mb-8 max-w-xl">
+        India’s largest science and technology festival, hosted by IIT Bombay – where innovation meets inspiration.
+      </p>
+      <div class="flex gap-4">
+        <button class="cta-btn px-6 py-3 bg-cyan-500 text-black rounded-xl font-bold hover:scale-105 hover:bg-cyan-400 transition">
+          Register Now
+        </button>
+        <button class="cta-btn px-6 py-3 border border-cyan-500 text-cyan-400 rounded-xl font-bold hover:bg-cyan-600/20 transition">
+          Explore Events
+        </button>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="max-w-6xl mx-auto px-6 py-24 space-y-16">
+      <div class="feature opacity-0 translate-y-12">
+        <h2 class="text-3xl font-semibold text-cyan-400 mb-2">🤖 Robotics Battles</h2>
+        <p class="text-gray-300">Witness intense machine vs machine combat in India's most electrifying robo-wars.</p>
+      </div>
+      <div class="feature opacity-0 translate-y-12">
+        <h2 class="text-3xl font-semibold text-cyan-400 mb-2">🧠 AI & Innovation</h2>
+        <p class="text-gray-300">Experience workshops and talks on cutting-edge AI, blockchain, space tech, and more.</p>
+      </div>
+      <div class="feature opacity-0 translate-y-12">
+        <h2 class="text-3xl font-semibold text-cyan-400 mb-2">🎤 Keynote Speakers</h2>
+        <p class="text-gray-300">Global tech leaders, innovators, and entrepreneurs sharing their wisdom and stories.</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-10 text-sm text-gray-500 border-t border-gray-700">
+      © 2025 Techfest, IIT Bombay. All rights reserved.
+    </footer>
+
+    <!-- GSAP Animations -->
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Navbar items animation
+      gsap.from(".nav-item", {
+        y: -20,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 1,
+        delay: 0.3,
+        ease: "power3.out"
+      });
+
+      // Hero Section
+      gsap.from("h1", { opacity: 0, y: -40, duration: 1, delay: 0.5 });
+      gsap.from("p", { opacity: 0, y: 20, duration: 1, delay: 0.8 });
+      gsap.from(".cta-btn", {
+        opacity: 0,
+        scale: 0.8,
+        stagger: 0.2,
+        duration: 0.6,
+        delay: 1,
+        ease: "back.out(1.7)"
+      });
+
+      // Scroll reveal for features
+      gsap.utils.toArray(".feature").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 60 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            scrollTrigger: {
+              trigger: el,
+              start: "top 85%",
+              toggleActions: "play none none reverse"
+            }
+          }
+        );
+      });
+    </script>
+  </body>
 </html>
