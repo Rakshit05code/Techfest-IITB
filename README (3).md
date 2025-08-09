@@ -82,12 +82,7 @@ Preview on desktop, tablets, or your mobile device and enjoy flawless visuals ev
 
 ---
 
-## ⚡ Extras
 
-- No frameworks, no images, no build step – just pure HTML & CSS!  
-- Ultra-lightweight and super-fast
-
----
 
 ## 👨‍💻 Credits
 
